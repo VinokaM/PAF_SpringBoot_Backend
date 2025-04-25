@@ -25,13 +25,19 @@ public class LearningProgressUpdateController {
         return service.getUpdatesByUser(userId);
     }
 
+//    get all progress
+    @GetMapping
+    public List<LearningProgressUpdate> getAllProgress() {
+        return service.getAllProgress();
+    }
+
     @PutMapping("/{id}")
-    public LearningProgressUpdate updateProgress(@PathVariable String id, @RequestBody LearningProgressUpdate update) {
+    public LearningProgressUpdate updateProgress(@PathVariable Long id, @RequestBody LearningProgressUpdate update) {
         return service.updateProgress(id, update);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteProgress(@PathVariable String id) {
+    public void deleteProgress(@PathVariable Long id) {
         service.deleteProgress(id);
     }
 }

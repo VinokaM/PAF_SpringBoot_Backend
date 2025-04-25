@@ -1,27 +1,28 @@
 package com.example.PAF.model;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+import jakarta.persistence.*;
+import java.time.LocalDateTime;
 
-@Document(collection = "learning_progress")
+@Entity
+@Table(name = "learning_progress")
 public class LearningProgressUpdate {
 
     @Id
-    private String id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     private String userId;
     private String title;
     private String content;
     private String templateType;
+    private LocalDateTime createdAt;
 
-    public String getUserId() {
-        return userId;
-    }
-//    Hello
+    // Getters and setters
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
-    }
+    public String getUserId() { return userId; }
+    public void setUserId(String userId) { this.userId = userId; }
 
     public String getTitle() { return title; }
     public void setTitle(String title) { this.title = title; }
@@ -31,4 +32,7 @@ public class LearningProgressUpdate {
 
     public String getTemplateType() { return templateType; }
     public void setTemplateType(String templateType) { this.templateType = templateType; }
+
+    public LocalDateTime getCreatedAt() { return createdAt; }
+    public void setCreatedAt(LocalDateTime createdAt) { this.createdAt = createdAt; }
 }
